@@ -30,8 +30,6 @@ def sha256sum(target):
 def writeFile(target, content):
     cont = content.split('\n')
     cont.pop(0)
-    if last:
-        cont.pop(-1)
     with open(target, 'w') as t:
         for line in cont:
             t.write(line + '\n')
