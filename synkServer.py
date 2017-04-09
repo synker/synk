@@ -27,7 +27,7 @@ def sha256sum(target):
     return sha256.hexdigest()
 
 
-def writeFile(target, content, last):
+def writeFile(target, content):
     cont = content.split('\n')
     cont.pop(0)
     if last:
