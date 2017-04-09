@@ -58,6 +58,7 @@ def syncServer():
         conn, (rip, rport) = sock0.accept()
         received = recvData(conn).split('\n')
         filename = received.split('\n')[0]
+        received.pop(0)
 
 
 while True:
