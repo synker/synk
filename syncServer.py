@@ -4,7 +4,7 @@
   "auto_save_all_files": true,
   "auto_save_current_file": "",
   "auto_save_backup": false,
-  "auto_save_backup_suffix": "autos
+  "auto_save_backup_suffix": 
 
 
 
