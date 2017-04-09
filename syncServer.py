@@ -1,6 +1,6 @@
 {
   "auto_save_on_modified": true,
-  "auto_save_delay_in_seconds": 1,
+  "auto_save_delay_in_seconds": 0.1,
   "auto_save_all_files": true,
   "auto_save_current_file": "",
   "auto_save_backup": false,
