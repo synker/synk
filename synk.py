@@ -32,8 +32,8 @@ def sendFile(conn, filename, orgfname, last):
         conn.send(sendBuffer.encode('utf-8'))
 
 
-def syncDid():
-    
+def syncDir():
+
 
 
 def printIcon():
