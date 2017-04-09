@@ -48,18 +48,6 @@ def recvData(conn):
     return received
 
 
-def projectFolderOK():
-    if not os.path.isdir() and not os.path.isfile(PROJECTDIR):
-        os.system('mkdir ' + PROJECTDIR)
-        return True
-    elif os.path.isfile(PROJECTDIR):
-        avalon.error('The Project Directory is a file!')
-        avalon.error('Please check your file system!')
-        return False
-    else:
-        return True
-
-
 def syncClient(sockclient):
 
 
