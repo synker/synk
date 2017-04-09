@@ -5,7 +5,7 @@
   "auto_save_current_file": "",
   "auto_save_backup": false,
   "auto_save_backup_suffix": "autosave"
-}
+
 
 
 
