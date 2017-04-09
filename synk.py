@@ -17,7 +17,7 @@ RHOST = 'narexium.com'
 RPORT = 4090
 VERSION = '0.1 beta'
 PROJECTDIR = '/home/k4yt3x/Projects/Python/Entr0'
-d oes dthisdf 
+
 
 def sendFile(conn, filename, orgfname, last):
     with open(filename, 'r') as target:
@@ -44,10 +44,10 @@ def syncDir():
             for line in target:
                 sendBuffer += line
             sock0.send(sendBuffer.encode('utf-8'))
-test
+i dont think this is working
 
 def printIcon():
-    pont understrint(' ____ ___  _ _      _  __')
+    print(' ____ ___  _ _      _  __')
     print('/ ___\\\\  \\/// \\  /|/ |/ /')
     print('|    \\ \\  / | |\\ |||   /')
     print('\\___ | / /  | | \\|||   \\')
