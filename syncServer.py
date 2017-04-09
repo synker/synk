@@ -19,13 +19,6 @@ PROJECTDIR = '/var/projects'
 LOG = '/var/log/sync.log'
 
 
-def sha256sum(target):
-    sha256 = hashlib.sha256()
-    with open(target, "rb") as f:
-        for chunk in iter(lambda: f.read(4096), b""):
-            sha256.update(chunk)
-    return sha256.hexdigest()
-
 
 def writeFile(target, content, last):
     cont = content.split('\n')
