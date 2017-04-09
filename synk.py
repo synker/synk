@@ -37,7 +37,7 @@ def syncDir():
     avalon.info('Trying to connect to ' + RHOST + 'on port ' + str(RPORT))
     for file in os.listdir():
         sock0.connect((RHOST, RPORT))
-        sock0.send()
+        
 
 
 def printIcon():
