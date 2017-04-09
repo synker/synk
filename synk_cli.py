@@ -23,7 +23,7 @@ def setup():
 
     try:
         os.system("git --git-dir=%s --work-tree=%s remote remove origin" % (projectdir + ".git", projectdir))
-        os.system("git remote add origin " + proto + "://%s:%s@%s" % (usernm, passwd, git_serv))
+         os.system("git remote add origin " + proto + "://%s:%s@%s" % (usernm, passwd, git_serv))
 
         with open(CONFFILE, "w") as cf:
             cf.write(projectdir + "\n" + usernm + "\n" + proto + "\n" + git_serv + "\n" + hashlib.sha512(passwd.encode("utf-8")).hexdigest())
