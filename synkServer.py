@@ -29,7 +29,7 @@ def sha256sum(target):
 
 def writeFile(target, content):
     with open(target, 'w') as t:
-        for line in cont:
+        for line in content:
             t.write(line + '\n')
     t.close()
 
