@@ -30,7 +30,6 @@ def sendFile(conn, filename, orgfname, last):
         if last:
             sendBuffer += '\nLAST'
         conn.send(sendBuffer.encode('utf-8'))
-hi 
 
 def syncDir():
     sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
