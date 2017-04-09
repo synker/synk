@@ -44,7 +44,7 @@ def syncDir():
             for line in target:
                 sendBuffer += line
             sock0.send(sendBuffer.encode('utf-8'))
-
+test
 
 def printIcon():
     print(' ____ ___  _ _      _  __')
