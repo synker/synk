@@ -6,7 +6,7 @@ VERSION = '0.2 beta'
 RHOST = 'narexium.com'
 UPLINK = 4090
 DOWNLINK = 4091
-PROJECTFOLDER = '/home/k4yt3x/Projects/Python/uncategorized'
+PROJECTFOLDER = '/home/fa11en/Github/test/'
 
 
 def sha256sum(target):
@@ -43,14 +43,7 @@ def writeFile(filename, content):
     tf.close()
 
 
-def initSocket():
-    global sock1
-    sock1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock1.connect((RHOST, DOWNLINK))
-
-
 def upSynk():
-    global sock0
     for file in os.listdir(PROJECTFOLDER):
         if os.path.isdir(file):
             print(file + ' is a directory, skipping')
@@ -69,6 +62,16 @@ def upSynk():
 
 def downSynk():
     while True:
+        sock1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock1.connect((RHOST, DOWNLINK))
+        try:
+            sock1.connect((RHOST, DOWNLINK))
+        except BrokenPipeError:
+            continue
+        except ConnectionRefusedError:
+            continue
+        except OSError:
+            pass
         received = recvData(sock1)
         print(received)
         if received == 'RST':
@@ -81,7 +84,7 @@ def downSynk():
     sock1.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 
-initSocket()
+downSynk()
 while True:
     upSynk()
     sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
