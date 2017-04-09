@@ -33,7 +33,7 @@ def sendFile(conn, filename, orgfname, last):
 
 
 def syncDid():
-    test
+    
 
 
 def printIcon():
