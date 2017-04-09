@@ -57,7 +57,7 @@ def syncServer():
     while True:
         conn, (rip, rport) = sock0.accept()
         received = recvData(conn)
-        if received.split('')
+        if received.split('\n')[]
 
 
 while True:
