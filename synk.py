@@ -36,7 +36,7 @@ def syncDir():
     sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     avalon.info('Trying to connect to ' + RHOST + 'on port ' + str(RPORT))
     for file in os.listdir():
-        if os
+        if os.path.isfile
         sock0.connect((RHOST, RPORT))
 
 
