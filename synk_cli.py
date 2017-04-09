@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import socket, os, time, multiprocessing
+import os, time
 
 proto = "https"
 git_server = "github.com/synker/synk.git"
