@@ -31,6 +31,7 @@ def sendFile(conn, filename, orgfname, last):
             sendBuffer += '\nLAST'
         conn.send(sendBuffer.encode('utf-8'))
 
+
 def syncDir():
     sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     avalon.info('Trying to connect to ' + RHOST + 'on port ' + str(RPORT))
