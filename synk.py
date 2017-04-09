@@ -33,7 +33,7 @@ def sendFile(conn, filename, orgfname, last):
 
 
 def syncDir():
-        sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     avalon.info('Trying to connect to ' + RHOST + 'on port ' + str(RPORT))
     sock0.connect((RHOST, RPORT))
 
