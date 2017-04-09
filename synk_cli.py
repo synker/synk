@@ -6,7 +6,7 @@ PROTO = "https"
 GIT_SERVER = "github.com/synker/synk.git"
 USERNM = "synker"
 PASSWD = "tosynkornottosynk"
-PROJECTDIR = ""
+PROJECTDIR = "/home/fa11en/Github/synk2/"
 
 
 def setup():
