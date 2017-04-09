@@ -17,11 +17,7 @@ RHOST = 'narexium.com'
 RPORT = 4090
 VERSION = '0.1 beta'
 PROJECTDIR = '/home/k4yt3x/Projects/Python/Entr0'
-<<<<<<< HEAD
 
-=======
-does this work 
->>>>>>> f22967c79e09406e09a64cd12131bf56d1e4b450
 
 def sendFile(conn, filename, orgfname, last):
     with open(filename, 'r') as target:
