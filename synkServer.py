@@ -72,7 +72,6 @@ def syncServer():
 
     while True:
         conn, (rip, rport) = sock0.accept()
-        multiprocessing.Process(target=syncClient, args=(conn,)).start()
 
 
 while True:
