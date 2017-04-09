@@ -70,7 +70,6 @@ def main():
     if not os.path.isfile("~/.config/synk.conf"):
         print("Please run `./synk_cli.py -s` first.")
         os.quit()
-        break
     while True:
         try:
             if detect_changes:
