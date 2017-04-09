@@ -18,7 +18,7 @@ LPORT = 4090
 PROJECTDIR = '/var/projects'
 LOG = '/var/log/sync.log'
 
-ss
+ssss
 
 def recvData(conn):
     received = ""
