@@ -1,22 +1,14 @@
-#!/usr/bin/python3
-"""
-.____ ___  _ _      _  __
-/ ___\\  \/// \  /|/ |/ /
-|    \ \  / | |\ |||   /
-\___ | / /  | | \|||   \
-\____//_/   \_/  \|\_|\_\
-
-"""
-import avalon_framework as avalon
-import socket
 import os
-import multiprocessing
+import socket
 import hashlib
+import sqlite3
 
-LHOST = "0.0.0.0"
-LPORT = 4090
-PROJECTDIR = '/var/projects'
-LOG = '/var/log/sync.log'
+VERSION = '0.2 beta'
+LHOST = '0.0.0.0'
+UPLINK = 4090
+DOWNLINK = 4091
+PROJECTFOLDER = '/var/projects'
+sql = sqlite3.connect('/tmp/synk.db')
 
 
 def sha256sum(target):
@@ -25,13 +17,6 @@ def sha256sum(target):
         for chunk in iter(lambda: f.read(4096), b""):
             sha256.update(chunk)
     return sha256.hexdigest()
-
-
-def writeFile(target, content):
-    with open(target, 'w') as t:
-        for line in content:
-            t.write(line + '\n')
-    t.close()
 
 
 def recvData(conn):
@@ -44,24 +29,60 @@ def recvData(conn):
     return received
 
 
-def syncServer():
+def writeFile(filename, content):
+    with open(filename, 'w') as tf:
+        for line in content:
+            tf.write(line + '\n')
+    tf.close()
+
+
+def initSocket():
     global sock0
+    global sock1
     sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock0.bind((LHOST, LPORT))
+    sock0.bind((LHOST, UPLINK))
     sock0.listen(10)
+    sock1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock1.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock1.bind((LHOST, DOWNLINK))
+    sock1.listen(10)
 
+
+def upSynk():
     while True:
-        conn, (rip, rport) = sock0.accept()
-        received = recvData(conn).split('\n')
-        filename = received.split('\n')[0]
+        socketClient, address = sock0.accept()
+        received = recvData(socketClient)
+        print(received)
+        if received == 'RST':
+            break
+        received = received.split('\n')
+        filename = received[0]
         received.pop(0)
-        writeFile(filename, received)
+        writeFile(PROJECTFOLDER + filename, received)
+        socketClient.close()
+    sock0.close()
 
 
+def downSynk():
+    for file in os.listdir(PROJECTFOLDER):
+        if os.path.isdir(file):
+            print(file + ' is a directory, skipping')
+            continue
+        else:
+            socketClient, address = sock1.accept()
+            sendBuffer = file + '\n'
+            filename = os.path.join(PROJECTFOLDER, file)
+            with open(filename, 'r') as target:
+                for line in target:
+                    sendBuffer += line
+            socketClient.send(sendBuffer.encode('utf-8'))
+            socketClient.close()
+
+
+initSocket()
 while True:
-    try:
-        syncServer()
-    except Exception as er:
-        with open(LOG, 'a+') as log:
-            log.write(str(er))
-        log.close()
+    upSynk()
+    downSynk()
+    socketClient, address = sock1.accept()
+    socketClient.send('RST'.encode('utf-8'))
+    socketClient.close()

@@ -9,7 +9,7 @@ LOGFILE = "/tmp/synk.log"
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.addArgument("-s", "--setup", help="Run the script in setup mode.")
+    parser.add_argument("-s", "--setup", help="Run the script in setup mode.")
 
     return parser.parse_args()
 
