@@ -61,26 +61,7 @@ def projectFolderOK():
 
 
 def syncClient(sockclient):
-    while True:
-        size = sockclient.recv(16).decode('utf-8')  # Note that you limit your filename length to 255 bytes.
-        if not size:
-            break
-        size = int(size, 2)
-        filename = sockclient.recv(size).decode('utf-8')
-        filesize = sockclient.recv(32).decode('utf-8')
-        filesize = int(filesize, 2)
-        file_to_write = open(filename, 'wb')
-        chunksize = 4096
-        while filesize > 0:
-            if filesize < chunksize:
-                chunksize = filesize
-            data = sockclient.recv(chunksize)
-            file_to_write.write(data)
-            filesize -= chunksize
 
-        file_to_write.close()
-        print('File received successfully')
-    sock0.close()
 
 
 def syncServer():
