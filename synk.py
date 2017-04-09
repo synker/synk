@@ -32,32 +32,7 @@ def sendFile(conn, filename, orgfname, last):
         conn.send(sendBuffer.encode('utf-8'))
 
 
-def syncDir():
-    sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    avalon.info('Trying to connect to ' + RHOST + 'on port ' + str(RPORT))
-    sock0.connect((RHOST, RPORT))
-    directory = os.listdir(PROJECTDIR)
-    for files in directory:
-        print(files)
-        filename = files
-        size = len(filename)
-        size = bin(size)[2:].zfill(16)  # encode filename size as 16 bit binary
-        sock0.send(size.encode('utf-8'))
-        sock0.send(filename.encode('utf-8'))
-
-        filename = os.path.join(PROJECTDIR, filename)
-        filesize = os.path.getsize(filename)
-        filesize = bin(filesize)[2:].zfill(32)  # encode filesize as 32 bit binary
-        sock0.send(filesize.encode('utf-8'))
-
-        file_to_send = open(filename, 'rb')
-
-        sendBuffer = file_to_send.read()
-        sock0.sendall(sendBuffer)
-        file_to_send.close()
-        print('File Sent')
-
-    sock0.close()
+def s
 
 
 def printIcon():
