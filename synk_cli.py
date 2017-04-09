@@ -12,7 +12,7 @@ PROJECTDIR = ""
 def setup():
 
     os.system("git remote remove origin")
-    os.system("git remote add origin " + proto + "://%s:%s@%s" % (usernm, passwd, git_server))
+    os.system("git remote add origin " + PROTO + "://%s:%s@%s" % (usernm, passwd, git_server))
 
 
 def upload_changes():
