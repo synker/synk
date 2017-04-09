@@ -1,13 +1,3 @@
-{
-  "auto_save_on_modified": true,
-  "auto_save_delay_in_seconds": 0.1,
-  "auto_save_all_files": true,
-  "auto_save_current_file": "",
-  "auto_save_backup": false,
-  "auto_save_b
-
-
-
 #!/usr/bin/python3
 """
 .____ ___  _ _      _  __
@@ -28,7 +18,25 @@ LPORT = 4090
 PROJECTDIR = '/var/projects'
 LOG = '/var/log/sync.log'
 
-ssss
+
+def sha256sum(target):
+    sha256 = hashlib.sha256()
+    with open(target, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            sha256.update(chunk)
+    return sha256.hexdigest()
+
+
+def writeFile(target, content, last):
+    cont = content.split('\n')
+    cont.pop(0)
+    if last:
+        cont.pop(-1)
+    with open(target, 'w') as t:
+        for line in cont:
+            t.write(line + '\n')
+    t.close()
+
 
 def recvData(conn):
     received = ""
