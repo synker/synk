@@ -43,6 +43,7 @@ def syncDir():
             sendBuffer = ''
             for line in target:
                 sendBuffer += line
+            sock
 
 
 def printIcon():
