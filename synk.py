@@ -47,7 +47,7 @@ def syncDir():
 test
 
 def printIcon():
-    print(' ____ ___  _ _      _  __')
+    pont understrint(' ____ ___  _ _      _  __')
     print('/ ___\\\\  \\/// \\  /|/ |/ /')
     print('|    \\ \\  / | |\\ |||   /')
     print('\\___ | / /  | | \\|||   \\')
