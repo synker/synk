@@ -2,13 +2,15 @@
 
 import os, time
 
-proto = "https"
-git_server = "github.com/synker/synk.git"
-usernm = "synker"
-passwd = "tosynkornottosynk"
+PROTO = "https"
+GIT_SERVER = "github.com/synker/synk.git"
+USERNM = "synker"
+PASSWD = "tosynkornottosynk"
+PROJECTDIR = ""
 
 
 def setup():
+
     os.system("git remote remove origin")
     os.system("git remote add origin " + proto + "://%s:%s@%s" % (usernm, passwd, git_server))
 
