@@ -42,7 +42,7 @@ def syncDir():
         with open(file, 'r') as target:
             sendBuffer = ''
             for line in target:
-                
+                sendBuffer:
 
 
 def printIcon():
