@@ -20,17 +20,6 @@ LOG = '/var/log/sync.log'
 
 
 
-def writeFile(target, content, last):
-    cont = content.split('\n')
-    cont.pop(0)
-    if last:
-        cont.pop(-1)
-    with open(target, 'w') as t:
-        for line in cont:
-            t.write(line + '\n')
-    t.close()
-
-
 def recvData(conn):
     received = ""
     while True:
