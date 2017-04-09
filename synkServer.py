@@ -48,10 +48,6 @@ def recvData(conn):
     return received
 
 
-def syncClient(sockclient):
-
-
-
 def syncServer():
     global sock0
     sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
