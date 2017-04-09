@@ -26,6 +26,6 @@ setup()
 while True:
     upload_changes()
     get_changes()
-    time.sleep(0.5)
+    time.sleep(0.1)
 
 
