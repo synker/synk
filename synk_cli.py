@@ -18,6 +18,7 @@ def setup():
     projectdir = input("Enter directory for project: ").strip()
     usernm = input("Enter username for project directory: ")          # synker
     proto, git_serv = input("Enter url to git project: ").split(':')  # https://github.com/synker/synk.git
+    git_serv = git_serv[2:]
     passwd = getpass.getpass()                                        # tosynkornottosynk
 
     try:
