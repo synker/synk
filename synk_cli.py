@@ -4,6 +4,7 @@ import os, time, argparse, getpass, hashlib
 
 
 CONFFILE = "~/.config/synk.conf"
+LOGFILE = "/tmp/synk.log"
 
 
 def get_args():
@@ -31,6 +32,27 @@ def setup():
         quit()
 
 
+def detect_changes():
+    old_hash = ""
+    new_hash = ""
+    projectdir = ""
+    with open(CONFIGFILE, 'r') as cf:
+        projectdir = cf.read().split('\n')[0]
+    with open(LOGFILE, 'r') as lf:
+        for line in lf:
+            old_hash += line.strip()
+    for subdir, dirs, files in os.walk(projectdir):
+        for file in files:
+            lines = ""
+            with open(file) as f:
+                lines = ''.join([line for line in f])
+            hash += hashlib.md5(lines)
+    with open(LOGFILE, 'w') as lf:
+        lf.write(new_hash)
+
+    return old_hash == old_hash
+
+
 def upload_changes():
     os.system("git add -f . && git commit -am 'autocommit' && git push origin master")
 
@@ -51,7 +73,8 @@ def main():
             break
     while True:
         try:
-            upload_changes()
+            if detect_changes:
+                upload_changes()
             get_changes()
             time.sleep(0.1)
         except KeyboardInterrupt:
