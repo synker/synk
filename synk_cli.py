@@ -20,7 +20,7 @@ def upload_changes():
 
 
 def get_changes():
-    os.system("git pull origin master --no-")
+    os.system("git pull origin master --no-edit")
 
 
 setup()
