@@ -59,7 +59,7 @@ def syncServer():
         received = recvData(conn).split('\n')
         filename = received.split('\n')[0]
         received.pop(0)
-        writeFile()
+        writeFile(filename)
 
 
 while True:
