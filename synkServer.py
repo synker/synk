@@ -1,14 +1,12 @@
 import os
 import socket
 import hashlib
-import sqlite3
 
 VERSION = '0.2 beta'
 LHOST = '0.0.0.0'
 UPLINK = 4090
 DOWNLINK = 4091
 PROJECTFOLDER = '/var/projects'
-sql = sqlite3.connect('/tmp/synk.db')
 
 
 def sha256sum(target):
@@ -60,7 +58,6 @@ def upSynk():
         received.pop(0)
         writeFile(PROJECTFOLDER + filename, received)
         socketClient.close()
-    sock0.close()
 
 
 def downSynk():

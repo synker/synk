@@ -6,7 +6,7 @@ VERSION = '0.2 beta'
 RHOST = 'narexium.com'
 UPLINK = 4090
 DOWNLINK = 4091
-PROJECTFOLDER = '/home/fa11en/Github/test/'
+PROJECTFOLDER = '/home/fa11en/Github/synk2'
 
 
 def sha256sum(target):
@@ -84,7 +84,6 @@ def downSynk():
     sock1.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 
-downSynk()
 while True:
     upSynk()
     sock0 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
