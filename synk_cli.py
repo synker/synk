@@ -43,7 +43,9 @@ def detect_changes():
         with open(LOGFILE, 'r') as lf:
             for line in lf:
                 old_hash += line.strip()
-        for subdir, dirs, files in os.walk(projectdir):
+        for rootdir, dirs, files in os.walk(projectdir, topdown=True):
+            files = [f for f in files if not f[0] == '.']
+            dirs[:] = [d for d in dirs if not d[0] == '.']
             for file in files:
                 lines = ""
                 with open(file) as f:
