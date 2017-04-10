@@ -78,7 +78,6 @@ def main():
         quit()
     while True:
         time.sleep(0.1)
-        print(detect_changes())
         try:
             if detect_changes():
                 os.system("git add -f . && git commit -am 'autocommit' && git stash save")
