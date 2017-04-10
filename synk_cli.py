@@ -81,7 +81,7 @@ def main():
         print(detect_changes())
         try:
             if detect_changes():
-                os.system("git add -f . && git commit -am 'autocommit' && git stash")
+                os.system("git add -f . && git commit -am 'autocommit' && git stash create 'autostash'")
                 get_changes()
                 upload_changes()
                 continue
