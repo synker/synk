@@ -67,7 +67,7 @@ def main():
     if args.setup:
         setup()
         quit()
-    if not os.path.isfile("/home/fa11en/.config/synk.conf"):
+    if not os.path.isfile(CONFFILE):
         print("Please run `./synk_cli.py -s` first.")
         quit()
     while True:
