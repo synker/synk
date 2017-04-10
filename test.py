@@ -12,9 +12,18 @@ dfg
 df
 g
 df
-g\jects/P
+g
+df
 """
-ython/uncategorized'
+import os
+import socket
+import hashlib
+
+VERSION = '0.2 beta'
+RHOST = 'narexium.com'
+UPLINK = 4090
+DOWNLINK = 4091
+PROJECTFOLDER = '/home/k4yt3x/Projects/Python/uncategorized'
 
 def square(x):
     return x**2
