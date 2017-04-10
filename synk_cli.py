@@ -37,21 +37,25 @@ def detect_changes():
     old_hash = ""
     new_hash = ""
     projectdir = ""
-    with open(CONFFILE, 'r') as cf:
-        projectdir = cf.read().split('\n')[0]
-    with open(LOGFILE, 'r') as lf:
-        for line in lf:
-            old_hash += line.strip()
-    for subdir, dirs, files in os.walk(projectdir):
-        for file in files:
-            lines = ""
-            with open(file) as f:
-                lines = ''.join([line for line in f])
-            new_hash += hashlib.md5(lines)
-    with open(LOGFILE, 'w') as lf:
-        lf.write(new_hash)
+    try:
+        with open(CONFFILE, 'r') as cf:
+            projectdir = cf.read().split('\n')[0]
+        with open(LOGFILE, 'r') as lf:
+            for line in lf:
+                old_hash += line.strip()
+        for subdir, dirs, files in os.walk(projectdir):
+            for file in files:
+                lines = ""
+                with open(file) as f:
+                    lines = ''.join([line for line in f])
+                new_hash += hashlib.md5(lines.encode("utf-8")).hexdigest()
+        with open(LOGFILE, 'w') as lf:
+            lf.write(new_hash)
+    except FileNotFoundError:
+        os.system("touch %s" % LOGFILE)
+        return True
 
-    return old_hash == old_hash
+    return old_hash != new_hash
 
 
 def upload_changes():
@@ -72,8 +76,9 @@ def main():
         quit()
     while True:
         time.sleep(0.1)
+        print(detect_changes())
         try:
-            if detect_changes:
+            if detect_changes():
                 os.system("git add -f . && git commit -am 'autocommit' && git stash")
                 get_changes()
                 upload_changes()
@@ -81,8 +86,8 @@ def main():
             get_changes()
         except KeyboardInterrupt:
             break
-        except Exception:
-            print("An error occurred.")
+        except Exception as e:
+            print("An error occurred: %s" % str(e))
             break
 
 
