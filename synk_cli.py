@@ -83,7 +83,7 @@ def main():
             if detect_changes():
                 os.system("git add -f . && git commit -am 'autocommit' && git stash save")
                 get_changes()
-                upload_changes()
+                upload_changes() 
                 continue
             get_changes()
         except KeyboardInterrupt:
