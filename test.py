@@ -3,13 +3,7 @@
 oidhfoishdf
 
 sdfsdfsd
-f
-sdf
-s
-df
-sd
-f
-d
+
 """
 import os
 import socket
