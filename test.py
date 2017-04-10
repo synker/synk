@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-LOLLOLLOL
+Hello
 """
 import os
 import socket
