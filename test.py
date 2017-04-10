@@ -12,20 +12,7 @@ dfg
 df
 g
 df
-g
-df
-ggf
-
-"""
-import os
-import socket
-import hashlib
-
-VERSION = '0.2 beta'
-RHOST = 'narexium.com'
-UPLINK = 4090
-DOWNLINK = 4091
-PROJECTFOLDER = '/home/k4yt3x/Projects/Python/uncategorized'
+g\jects/Python/uncategorized'
 
 def square(x):
     return x**2
