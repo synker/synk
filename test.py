@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""[summary]
+
+[description]
+"""
 import os
 import socket
 import hashlib
