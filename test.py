@@ -12,7 +12,8 @@ dfg
 df
 g
 df
-g\jects/Python/uncategorized'
+g\jects/P
+ython/uncategorized'
 
 def square(x):
     return x**2
