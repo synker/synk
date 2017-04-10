@@ -37,7 +37,7 @@ def detect_changes():
     old_hash = ""
     new_hash = ""
     projectdir = ""
-    with open(CONFIGFILE, 'r') as cf:
+    with open(CONFFILE, 'r') as cf:
         projectdir = cf.read().split('\n')[0]
     with open(LOGFILE, 'r') as lf:
         for line in lf:
@@ -47,7 +47,7 @@ def detect_changes():
             lines = ""
             with open(file) as f:
                 lines = ''.join([line for line in f])
-            hash += hashlib.md5(lines)
+            new_hash += hashlib.md5(lines)
     with open(LOGFILE, 'w') as lf:
         lf.write(new_hash)
 
