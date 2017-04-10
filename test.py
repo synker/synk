@@ -15,7 +15,7 @@ UPLINK = 4090
 DOWNLINK = 4091
 PROJECTFOLDER = '/home/k4yt3x/Projects/Python/uncategorized'
 
-
+def square(x)
 def sha256sum(target):
     sha256 = hashlib.sha256()
     with open(target, "rb") as f:
